@@ -1,0 +1,12 @@
+.nav {
+  display: flex;
+  padding: 10px;
+}
+img {
+  height: 50px;
+  width: auto;
+  padding: 10px;
+}
+.logo {
+  margin-left: 20%;
+}

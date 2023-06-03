@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap");
+table {
+  color: white;
+  border: 1px solid gray;
+
+}
+th,
+td {
+  color: white;
+  border: 1px solid rgb(109, 161, 177);
+  width: 15rem;
+  height: 4rem;
+}
+td,
+.page {
+  font-family: "Zilla Slab", serif;
+}
+input[type="checkbox"] {
+  padding: 5px;
+  margin: 5px;
+}
+
+.page {
+  display: flex;
+  background: #2A3E4C;
+  width: 30rem;
+
+  justify-content: center;
+  float: right;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  margin: 10px;
+}
+.page > p {
+  text-align: center;
+  margin: 10px;
+}
+
+.arrow > svg {
+  margin: 5px;
+}
+.dropdown {
+  background: rgb(63, 60, 60);
+  padding: 5px;
+  margin: 5px;
+  text-align: center;
+  border-radius: 5px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.center {
+  margin: auto;
+  top: 80px;
+  position: relative;
+  width: 60%;
+  padding: 10px;
+}
