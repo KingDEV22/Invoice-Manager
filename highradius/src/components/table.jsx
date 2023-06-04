@@ -77,7 +77,7 @@ const TableData = (props) => {
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.business_year.substr(0, 4)}
+          {info.business_year}
         </TableCell>
         <TableCell
           align="center"

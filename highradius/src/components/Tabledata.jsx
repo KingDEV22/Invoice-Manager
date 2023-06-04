@@ -19,7 +19,9 @@ const Data = () => {
   useEffect(() => {
     if (query === "") {
       axios
-        .get(`http://localhost:8080/Winter_Backend/data?page=${currentPage}`)
+        .get(
+          `http://localhost:8080/invoice/list?page=${currentPage}&pagesize=${rowCount}`
+        )
         .then((response) => {
           setData((prev) => [...prev, ...response.data]);
         })
@@ -28,6 +30,8 @@ const Data = () => {
         });
     }
   }, [currentPage]);
+
+  console.log(data);
   const handleCheckedValue = (e) => {
     var updatedList = [...checked];
     if (e.target.checked) {
@@ -92,6 +96,8 @@ const Data = () => {
   const itemCount = data.length;
   const sorted = _.orderBy(data, [sortColumn.path], [sortColumn.order]);
   const currentData = paginate(sorted, currentPage + 1, rowCount);
+
+  console.log(currentData);
 
   return (
     <React.Fragment>

@@ -10,7 +10,7 @@ import Tools from "./tools.jsx";
 class Data extends Component {
   state = {
     rowCount: 5,
-    currentPage: 1,
+    currentPage: 0,
     tableHeader: {
       id: "Sl no",
       business_code: "Business Code",
@@ -41,10 +41,11 @@ class Data extends Component {
   componentDidMount() {
     const getData = () => {
       fetch(
-        `http://localhost:8080/Winter_Backend/data?page=${this.state.currentPage}`
+        `http://localhost:8080/invoice/list?page=${this.state.currentPage}&pagesize=${this.state.rowCount}`
       )
         .then((res) => res.json())
         .then((json) => {
+          console.log(json);
           this.setState({
             data: json,
           });

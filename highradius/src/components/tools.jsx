@@ -22,7 +22,7 @@ const Tools = (props) => {
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/Winter_Backend/search?query=${searchQuery}`)
+      .get(`http://localhost:8080/invoice?keyword=${searchQuery}`)
       .then((response) => {
         props.searchChange(response.data, searchQuery);
       })
