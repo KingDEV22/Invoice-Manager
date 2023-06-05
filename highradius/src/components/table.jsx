@@ -11,23 +11,23 @@ import {
 import { useState } from "react";
 const TableData = (props) => {
   const tableHeader = {
-    sl_no: "Sl no",
-    business_code: "Business Code",
-    cust_number: "Customer Number",
-    clear_date: "Clear Date",
-    buisness_year: "Buisness Year",
-    doc_id: "Doc ID",
-    posting_date: "Posting Date",
-    document_create_date: "Document Create Date",
-    due_in_date: "Due In Date",
-    invoice_currency: "Invoice Currency",
-    document_type: "Document Type",
-    posting_id: "Posting ID",
-    total_open_amount: "Total Open Amount",
-    baseline_create_date: "Baseline Create Date",
-    cust_payment_terms: "Customer Payment Terms",
-    invoice_id: "Invoice ID",
-    aging_bucket: "Aging Bucket",
+    slNo: "Sl no",
+    businessCode: "Business Code",
+    custNumber: "Customer Number",
+    clearDate: "Clear Date",
+    buisnessYear: "Buisness Year",
+    docId: "Doc ID",
+    postingDate: "Posting Date",
+    documentCreateDate: "Document Create Date",
+    dueInDate: "Due In Date",
+    invoiceCurrency: "Invoice Currency",
+    documentType: "Document Type",
+    postingId: "Posting ID",
+    totalOpenAmount: "Total Open Amount",
+    baselineCreateDate: "Baseline Create Date",
+    custPaymentTerms: "Customer Payment Terms",
+    invoiceId: "Invoice ID",
+    agingBucket: "Aging Bucket",
   };
   const [checked, setchecked] = useState(false);
 
@@ -41,115 +41,117 @@ const TableData = (props) => {
   };
   const DisplayData = props.currentData.map((info) => {
     return (
-      <TableRow key={info.doc_id}>
-        <Checkbox
-          {...label}
-          sx={{ color: "white", padding: 3 }}
-          value={info.doc_id}
-          color="default"
-          onChange={props.setCheckedValue}
-        />
-        <TableCell
-          align="center"
-          style={{ color: "white", fontFamily: "Fira Sans" }}
-        >
-          {info.sl_no}
+      <TableRow key={info.slNo}>
+        <TableCell>
+          <Checkbox
+            {...label}
+            sx={{ color: "white", padding: 3 }}
+            value={info.docId}
+            color="default"
+            onChange={props.setCheckedValue}
+          />
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.business_code}
+          {info.slNo}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.cust_number}
+          {info.businessCode}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.clear_date != null ? info.clear_date : "N/A"}
+          {info.custNumber}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.business_year}
+          {info.clearDate != null ? info.clearDate : "N/A"}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.doc_id}
+          {info.buisnessYear}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.posting_date}
+          {info.docId}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.document_create_date}
+          {info.postingDate}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.due_in_date}
+          {info.documentCreateDate}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.invoice_currency}
+          {info.dueInDate}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.document_type}
+          {info.invoiceCurrency}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.posting_id}
+          {info.documentType}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.total_open_amount}
+          {info.postingId}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.baseline_create_date}
+          {info.totalOpenAmount}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.cust_payment_terms}
+          {info.baselineCreateDate}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.invoice_id}
+          {info.custPaymentTerms}
         </TableCell>
         <TableCell
           align="center"
           style={{ color: "white", fontFamily: "Fira Sans" }}
         >
-          {info.aging_bucket}
+          {info.invoiceId}
+        </TableCell>
+        <TableCell
+          align="center"
+          style={{ color: "white", fontFamily: "Fira Sans" }}
+        >
+          {info.agingBucket}
         </TableCell>
       </TableRow>
     );
@@ -173,20 +175,18 @@ const TableData = (props) => {
   return (
     <TableContainer
       style={{
-        height: window.innerHeight - 230,
-        width: window.innerWidth - 20,
+        // height: window.innerHeight - 230,
+        // width: window.innerWidth - 20,
         overflow: "scroll",
       }}
     >
       <Table className="table">
         <TableHead>
           <TableRow>
-            <TableCell>
+            <TableCell align="center">
               <Checkbox
                 {...label}
                 sx={{ color: "white" }}
-                // id="outlined"
-                // value={info.sl_no}
                 color="default"
                 onClick={handlecheck}
                 disableRipple={true}

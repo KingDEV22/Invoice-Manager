@@ -9,27 +9,30 @@ const Data = () => {
   const [data, setData] = useState([]);
   const [currentPage, setcurrentPage] = useState(0);
   const [rowCount, setrowCount] = useState(10);
+  const [totalPage, setTotalPage] = useState(0);
+  const [totalElement, setTotalElement] = useState(0);
   const [sortColumn, setsortColumn] = useState({
-    path: "sl_no",
+    path: "slNo",
     order: "asc",
   });
   const [checked, setchecked] = useState([]);
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState("null");
 
   useEffect(() => {
-    if (query === "") {
-      axios
-        .get(
-          `http://localhost:8080/invoice/list?page=${currentPage}&pagesize=${rowCount}`
-        )
-        .then((response) => {
-          setData((prev) => [...prev, ...response.data]);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [currentPage]);
+    axios
+      .get(
+        `http://localhost:8080/invoice/list?page=${currentPage}&pagesize=${rowCount}&query=${query}`
+      )
+      .then((response) => {
+        console.log(currentPage, rowCount, response.data.invoices);
+        setData(response.data.invoices);
+        setTotalPage(response.data.totalPage);
+        setTotalElement(response.data.totalElement);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [currentPage, rowCount, query]);
 
   console.log(data);
   const handleCheckedValue = (e) => {
@@ -75,6 +78,7 @@ const Data = () => {
     setrowCount(e.target.value);
   };
   const handleSort = (path) => {
+    console.log(path);
     const sort = { ...sortColumn };
     if (sort.path === path) sort.order = sort.order === "asc" ? "desc" : "asc";
     else {
@@ -83,21 +87,19 @@ const Data = () => {
     }
     setsortColumn(sort);
   };
-  const handleSearchChange = (searchData, query) => {
-    setData(searchData);
+  const handleSearchChange = (query) => {
+    // setData(searchData);
     setQuery(query);
-    setcurrentPage(0);
+    console.log(query);
+    // setcurrentPage(0);
   };
 
   const paginate = (data, pageNumber, rowCount) => {
     const index = (pageNumber - 1) * rowCount;
     return _(data).slice(index).take(rowCount).value();
   };
-  const itemCount = data.length;
   const sorted = _.orderBy(data, [sortColumn.path], [sortColumn.order]);
   const currentData = paginate(sorted, currentPage + 1, rowCount);
-
-  console.log(currentData);
 
   return (
     <React.Fragment>
@@ -108,16 +110,16 @@ const Data = () => {
         predict={handlepredict}
       />
       <TableData
-        currentData={currentData}
+        currentData={sorted}
         handleSort={handleSort}
-        rowCount={rowCount}
         setCheckedValue={handleCheckedValue}
         setAllChecked={handleAllChecked}
       />
       <PageOreintation
         rowCount={rowCount}
-        itemCount={itemCount}
         currentPage={currentPage}
+        totalPage={totalPage}
+        totalElement={totalElement}
         onPageIncreamentChange={handlePageIncreamentChange}
         onPageDecreamentChange={handlePageDecrementChange}
         handleValue={handleValue}

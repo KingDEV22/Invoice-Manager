@@ -1,8 +1,7 @@
 import React from "react";
 
 const PageOreintation = (props) => {
-  const { rowCount, itemCount, currentPage } = props;
-  const pageCount = Math.ceil(itemCount / rowCount);
+  const { rowCount, itemCount, currentPage, totalPage, totalElement } = props;
   const page = currentPage;
   const row = [10, 15, 20, 50, 100];
 
@@ -23,12 +22,12 @@ const PageOreintation = (props) => {
       </svg>
       <svg
         onClick={() => {
-          if (page < pageCount) props.onPageIncreamentChange(page, rowCount);
+          if (page < totalPage) props.onPageIncreamentChange(page, rowCount);
         }}
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
-        fill={page < pageCount ? "currentColor" : null}
+        fill={page < totalPage ? "currentColor" : null}
         className="bi bi-arrow-right-circle-fill"
         viewBox="0 0 16 16"
       >
@@ -48,7 +47,7 @@ const PageOreintation = (props) => {
       </select>
       {pageChangeArrow}
       <p>
-        {currentPage} - {pageCount} of {itemCount}
+        {currentPage} - {totalPage} of {totalElement}
       </p>
     </div>
   );

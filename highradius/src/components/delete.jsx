@@ -8,10 +8,13 @@ const DeleteInvoice = ({ open, setOpen, alterInvoice }) => {
   };
   const deleteInvoice = () => {
     axios
-      .post("http://localhost:8080/Winter_Backend/delete", { alterInvoice })
+      .delete("http://localhost:8080/invoice/delete", {
+        data: { alterInvoice },
+      })
       .then((response) => {
         console.log(response);
         handleClose();
+        window.location.reload(false);
         // setDataPageCount(0);
       })
       .catch((error) => {

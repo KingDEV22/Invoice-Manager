@@ -9,41 +9,41 @@ const AddInvoice = (props) => {
     props.setOpen(false);
     window.location.reload(false);
   };
-  const [business_code, setBusinessCode] = useState("");
-  const [cust_number, setCustomerNumber] = useState("");
-  const [clear_date, setClearDate] = useState("");
-  const [business_year, setBusinessYear] = useState("");
-  const [customer_id, setCustomerId] = useState("");
-  const [posting_date, setPostingDate] = useState("");
-  const [document_create_date, setDocumentCreateDate] = useState("");
-  const [due_in_date, setDueDate] = useState("");
-  const [invoice_currency, setInvoiceCurrency] = useState("");
-  const [document_type, setDocuemntType] = useState("");
-  const [posting_id, setPostingId] = useState("");
-  const [total_open_amount, setTotalOpenAmount] = useState("");
-  const [baseline_create_date, setBaselineCreateDate] = useState("");
-  const [invoice_id, setInvoiceId] = useState("");
-  const [customer_payment_terms, setCustPaymentTerms] = useState("");
+  const [businessCode, setBusinessCode] = useState("");
+  const [custNumber, setCustomerNumber] = useState("");
+  const [clearDate, setClearDate] = useState("");
+  const [businessYear, setBusinessYear] = useState("");
+  const [customerId, setCustomerId] = useState("");
+  const [postingDate, setPostingDate] = useState("");
+  const [documentCreateDate, setDocumentCreateDate] = useState("");
+  const [dueInDate, setDueDate] = useState("");
+  const [invoiceCurrency, setInvoiceCurrency] = useState("");
+  const [documentType, setDocuemntType] = useState("");
+  const [postingId, setPostingId] = useState("");
+  const [totalOpenAmount, setTotalOpenAmount] = useState("");
+  const [baselineCreateDate, setBaselineCreateDate] = useState("");
+  const [invoiceId, setInvoiceId] = useState("");
+  const [customerPaymentTerms, setCustPaymentTerms] = useState("");
   const postInvoice = () => {
     const invoiceData = {
-      business_code,
-      cust_number,
-      clear_date,
-      business_year,
-      customer_id,
-      posting_date,
-      document_create_date,
-      due_in_date,
-      invoice_currency,
-      document_type,
-      posting_id,
-      total_open_amount,
-      baseline_create_date,
-      invoice_id,
-      customer_payment_terms,
+      businessCode,
+      custNumber,
+      clearDate,
+      businessYear,
+      customerId,
+      postingDate,
+      documentCreateDate,
+      dueInDate,
+      invoiceCurrency,
+      documentType,
+      postingId,
+      totalOpenAmount,
+      baselineCreateDate,
+      invoiceId,
+      customerPaymentTerms,
     };
     axios
-      .post(`http://localhost:8080/Winter_Backend/add`, invoiceData)
+      .post(`http://localhost:8080/invoice/add`, invoiceData)
       .catch((error) => {
         console.log(error);
       });
@@ -52,11 +52,11 @@ const AddInvoice = (props) => {
   return (
     <Dialog open={props.open} onClose={handleClose} maxWidth={"lg"}>
       <Grid container justifyContent="center" style={{ background: "#2A3E4C" }}>
-        <h3 style={{ color: "white", padding: 10, margin: 10 }}>Add</h3>
+        <h3 style={{ color: "white", padding: 10, margin: 1 }}>Add</h3>
         <Box
           component="form"
           sx={{
-            "& > :not(style)": { p: 2.2, width: "30ch" },
+            "& > :not(style)": { p: 2.2, width: "20ch" },
           }}
           noValidate
           autoComplete="off"
@@ -64,8 +64,7 @@ const AddInvoice = (props) => {
           <TextField
             required
             id="outlined-"
-            // label="Outlined"
-            // variant="outlined"
+            variant="outlined"
             inputProps={{
               style: {
                 fontFamily: "Arial",

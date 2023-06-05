@@ -20,16 +20,22 @@ const Tools = (props) => {
   const handleAddInvoice = () => {
     setOpenAddInvoice(true);
   };
-  useEffect(() => {
-    axios
-      .get(`http://localhost:8080/invoice?keyword=${searchQuery}`)
-      .then((response) => {
-        props.searchChange(response.data, searchQuery);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [searchQuery]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         `http://localhost:8080/invoice?keyword=${searchQuery}`
+  //       );
+  //       props.searchChange(response.data, searchQuery);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   if (searchQuery !== "") {
+  //     fetchData();
+  //   }
+  // }, [searchQuery]);
 
   const handleEditInvoice = () => {
     if (props.alterInvoice.length === 1) {
@@ -49,8 +55,9 @@ const Tools = (props) => {
     props.searchChange(data, "search");
   };
   const handleSearchResult = (e) => {
-    setSearchResult(e.target.value);
-    console.log(searchQuery);
+    if (e.key === "Enter") {
+      setSearchResult(e.target.value);
+    }
   };
   return (
     <div className="tools">
@@ -98,8 +105,12 @@ const Tools = (props) => {
         type="text"
         placeholder="Search Customer ID"
         className="search"
-        //onChange={(e) => props.searchChange(e.currentTarget.value)}
-        onChange={handleSearchResult}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            props.searchChange(e.currentTarget.value);
+          }
+        }}
+        // onChange={handleSearchResult}
       />
       <div style={{ paddingRight: "20px", paddingTop: "10px" }}>
         <Button

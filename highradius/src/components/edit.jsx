@@ -9,19 +9,24 @@ const EditInvoice = (props) => {
   const [customer_payment_terms, setCustPaymentTerms] = useState("");
   const [invoice_currency, setInvoiceCurrency] = useState("");
   const editInvoice = () => {
-    const sl_no = props.editInvoiceNo[0];
+    const docId = props.editInvoiceNo[0];
     const EditInvoice = {
-      sl_no,
+      docId,
       invoice_currency,
       customer_payment_terms,
     };
+
+    console.log(EditInvoice);
     axios
-      .post(`http://localhost:8080/Winter_Backend/edit`, EditInvoice)
+      .put(`http://localhost:8080/invoice/update`, {
+        docId,
+        invoice_currency,
+        customer_payment_terms,
+      })
       .then((response) => {
         console.log(response);
-        // handleClose();
-        // setData([])
-        // setDataPageCount(0);
+        handleClose();
+        window.location.reload(false);
       })
       .catch((error) => {
         console.log(error);
@@ -32,7 +37,7 @@ const EditInvoice = (props) => {
     <Dialog open={props.open} onClose={handleClose} maxWidth={"lg"}>
       <div style={{ background: "#2A3E4C" }}>
         <h2 style={{ color: "white", padding: 10, margin: 10 }}>Edit</h2>
-        <Grid container justify="center">
+        <Grid container>
           <Box
             component="form"
             sx={{
@@ -75,7 +80,7 @@ const EditInvoice = (props) => {
             />
           </Box>
         </Grid>
-        <Grid container justify="center" style={{ background: "#2A3E4C" }}>
+        <Grid container style={{ background: "#2A3E4C" }}>
           <Button
             onClick={editInvoice}
             type="submit"
