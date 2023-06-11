@@ -54,11 +54,6 @@ const Tools = (props) => {
   const searchResult = (data) => {
     props.searchChange(data, "search");
   };
-  const handleSearchResult = (e) => {
-    if (e.key === "Enter") {
-      setSearchResult(e.target.value);
-    }
-  };
   return (
     <div className="tools">
       <div style={{ paddingRight: "20px", paddingTop: "10px" }}>

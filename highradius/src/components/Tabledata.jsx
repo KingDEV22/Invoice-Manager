@@ -24,7 +24,6 @@ const Data = () => {
         `http://localhost:8080/invoice/list?page=${currentPage}&pagesize=${rowCount}&query=${query}`
       )
       .then((response) => {
-        console.log(currentPage, rowCount, response.data.invoices);
         setData(response.data.invoices);
         setTotalPage(response.data.totalPage);
         setTotalElement(response.data.totalElement);
