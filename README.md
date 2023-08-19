@@ -1,15 +1,13 @@
 # Invoice-Manager
-Invoice Manager is a web-based application designed to help manage and track invoices efficiently. 
-It provides a user-friendly interface for performing various operations such as adding, deleting, updating, viewing, sorting, and searching invoices. 
-Additionally, it offers a prediction feature to estimate the due dates of invoices based on historical data.
+Invoice Manager: Streamline invoice management with a user-friendly web app. Perform tasks like adding, deleting, updating, viewing, sorting, and searching invoices effortlessly. Also, leverage predictive capabilities for estimating due dates using historical data.
 
 ## Features
 The Invoice Manager project is divided into three main parts:
 
 ### Frontend/UI: 
-The user interface is built using React, HTML, and CSS. It offers a seamless and intuitive experience for managing invoices. The following features are available:
+The user interface is built using React and CSS.The following features are available:
 
-Add: Users can create new invoices and input relevant details such as invoice number, amount, due date, etc.
+Add: Users can create new invoices.
 
 Delete: Invoices can be easily removed from the system when they are no longer needed.
 
